@@ -6,5 +6,5 @@ set -eu
 
 cargo install basic-http-server
 
-(cd docs && basic-http-server --addr 0.0.0.0:8080 .)
+(cd public && basic-http-server --addr 0.0.0.0:8080 .)
 # (cd docs && python3 -m http.server 8080 --bind 127.0.0.1)
