@@ -216,8 +216,8 @@ mod shader {
     uniform sampler2D tex;
     uniform lowp vec2 resolution;
     lowp float warp = 0.75;
-    lowp float scan = 0.5;
-    lowp float split = 1.0;
+    lowp float scan = 0.3;
+    lowp float split = 2.0;
     void main() {
         lowp vec2 uv = texcoord;
         lowp vec2 dc = abs(0.5 - uv);
@@ -228,7 +228,7 @@ mod shader {
         if (uv.y > 1.0 || uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0)
             gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
         else {
-            lowp float apply = abs(sin(uv.y * resolution.y / 2.0) * 0.5 * scan);
+            lowp float apply = abs(sin(uv.y * resolution.y / 4.0) * 0.5 * scan);
             lowp float r = texture2D(tex, vec2(uv.x + split / resolution.x, uv.y)).r;
             lowp float g = texture2D(tex, uv).g;
             lowp float b = texture2D(tex, vec2(uv.x - split / resolution.x, uv.y)).b;
